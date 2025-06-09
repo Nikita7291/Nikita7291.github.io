@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Таблица в консоль</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 5px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 5px 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Таблица (результат в консоли)</h1>
+
+  <form id="tableForm">
+    <label for="rows">Введите количество строк:</label>
+    <input type="number" id="rows" name="rows" min="1" required>
+    <button type="submit">Вывести в консоль</button>
+  </form>
+
+  <script>
+    'use strict';
+    document.getElementById('tableForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const rows = parseInt(document.getElementById("rows").value);
+      
+      if (isNaN(rows) || rows < 1) {
+        console.error("Ошибка: введите целое число ≥ 1");
+        return;
+      }
+
+      const sequence = ["dog", "dog", "dog", "cat", "cat"];
+      let output = "Результат:\n";
+
+      for (let i = 0; i < rows; i++) {
+        let row = "";
+        for (let j = 0; j < 6; j++) {
+          row += sequence[(i * 6 + j) % sequence.length] + "\t";
+        }
+        output += row + "\n";
+      }
+
+      console.log(output);
+      console.log("Готово! Проверьте консоль (F12)");
+    });
+  </script>
+
+</body>
+</html>
