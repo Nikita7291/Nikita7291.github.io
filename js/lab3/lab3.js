@@ -3,7 +3,7 @@
 import {
     fib
   } from './functions.js';
-
+ 
 /**
  * Возвращает дробную часть числа.
  * @param {number} num - Число.
